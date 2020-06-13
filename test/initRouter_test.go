@@ -15,5 +15,5 @@ func TestIndexGetRouter(t *testing.T) {
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	ginRouter.ServeHTTP(w, req)
 	assert.Equal(t, http.StatusOK, w.Code)
-	assert.Equal(t, "hello gin", w.Body.String())
+	assert.JSONEq(t, `{"message":"hello gin"}`, w.Body.String())
 }
